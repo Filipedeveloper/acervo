@@ -2,8 +2,10 @@ package br.com.stefanini.developerup.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.CascadeType;
@@ -13,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -42,6 +45,11 @@ public class Livro extends PanacheEntityBase implements Serializable{
 	@JoinColumn(name="autor_id")
 	private Autor autor;
 	
+	@OneToMany(mappedBy = "id.livro")
+	private Set<Emprestar> emprestimos = new HashSet<Emprestar>();
+	
+	
+	
 	public Livro() {
 		super();
 	}
@@ -59,7 +67,14 @@ public class Livro extends PanacheEntityBase implements Serializable{
 		this.nome = nome;
 	}
 	
-	
+	public List<Livro> getLivros(){
+		List<Livro> livros = new ArrayList<Livro>();
+		for(Emprestar e : emprestimos) {
+			livros.add(e.getLivro());
+		}
+		
+		return livros;
+	}
 
 
 
@@ -141,6 +156,18 @@ public class Livro extends PanacheEntityBase implements Serializable{
 			return false;
 		Livro other = (Livro) obj;
 		return Objects.equals(id, other.id);
+	}
+
+
+
+	public Set<Emprestar> getEmprestimos() {
+		return emprestimos;
+	}
+
+
+
+	public void setEmprestimos(Set<Emprestar> emprestimos) {
+		this.emprestimos = emprestimos;
 	}
 
 

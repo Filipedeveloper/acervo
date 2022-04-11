@@ -2,11 +2,16 @@ package br.com.stefanini.developerup.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -30,6 +35,10 @@ public class Cliente extends PanacheEntityBase {
 
     @Column(name = "contato")
     private String contato;
+    
+    @JsonbTransient
+    @OneToMany(mappedBy = "id.cliente")
+    private Set<Emprestar> emprestimos = new HashSet<Emprestar>();
 
     public Integer getId() {
         return id;
@@ -62,4 +71,12 @@ public class Cliente extends PanacheEntityBase {
     public void setContato(String contato) {
         this.contato = contato;
     }
+
+	public Set<Emprestar> getEmprestimos() {
+		return emprestimos;
+	}
+
+	public void setEmprestimos(Set<Emprestar> emprestimos) {
+		this.emprestimos = emprestimos;
+	}
 }
