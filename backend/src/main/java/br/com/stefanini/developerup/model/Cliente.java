@@ -2,6 +2,7 @@ package br.com.stefanini.developerup.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,6 +17,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * @author Danilo Dorgam
@@ -25,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "cliente")
-public class Cliente extends PanacheEntityBase {
+public class Cliente extends PanacheEntityBase implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,8 +41,7 @@ public class Cliente extends PanacheEntityBase {
     @Column(name = "contato")
     private String contato;
     
-    @JsonIgnore
-    @Transient
+    @JsonbTransient
     @OneToMany(mappedBy = "id.cliente")
     private Set<Emprestar> emprestimos = new HashSet<>();
 

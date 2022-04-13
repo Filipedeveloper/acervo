@@ -2,10 +2,16 @@ package br.com.stefanini.developerup.model;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Optional;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -16,7 +22,10 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 public class Emprestar extends PanacheEntityBase implements Serializable {
 	
 	
+	 
 	private static final long serialVersionUID = 1L;
+	
+	
 
 	@EmbeddedId
 	private EmprestarPk id = new EmprestarPk(); 
@@ -37,6 +46,7 @@ public class Emprestar extends PanacheEntityBase implements Serializable {
 		this.dataEntrega = dataEntrega;
 		this.status = status;
 	}
+	
 	
 	
 	public Cliente getCliente() {

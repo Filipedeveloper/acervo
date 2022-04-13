@@ -42,5 +42,7 @@ public class LivroDao {
 		obj.setIsbn(livro.getIsbn());
 		obj.setQuantidade(livro.getQuantidade());
 		obj.setAutor(livro.getAutor());
+		obj.setEmprestimos(livro.getEmprestimos());
+		
 	}
 }

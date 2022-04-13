@@ -1,5 +1,10 @@
 package br.com.stefanini.developerup.dto;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import br.com.stefanini.developerup.model.Emprestar;
+
 /**
  * @author Danilo Dorgam
  * email danilodorgam@gmail.com
@@ -14,6 +19,8 @@ public class ClienteDto {
 
 
     private String contato;
+    
+    private Set<Emprestar> emprestimos = new HashSet<>();
 
 
     public String getEmail() {
@@ -39,4 +46,12 @@ public class ClienteDto {
     public void setContato(String contato) {
         this.contato = contato;
     }
+
+	public Set<Emprestar> getEmprestimos() {
+		return emprestimos;
+	}
+
+	public void setEmprestimos(Set<Emprestar> emprestimos) {
+		this.emprestimos = emprestimos;
+	}
 }

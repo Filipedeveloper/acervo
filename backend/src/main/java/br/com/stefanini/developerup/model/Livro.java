@@ -20,6 +20,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
@@ -47,6 +48,7 @@ public class Livro extends PanacheEntityBase implements Serializable{
 	
 	@JsonIgnore
     @Transient
+    
 	@OneToMany(mappedBy = "id.livro")
 	private Set<Emprestar> emprestimos = new HashSet<Emprestar>();
 	

@@ -42,6 +42,13 @@ public class ClienteDao {
 		obj.setNome(cliente.getNome());
 		obj.setEmail(cliente.getEmail());
 		obj.setContato(cliente.getContato());
+		
 	}
+    @Transactional
+   	public void atualizarEmprestimo(Integer id, Cliente cliente) {
+   		Cliente obj =  Cliente.findById(id);
+   		obj.setEmprestimos(cliente.getEmprestimos());
+   		
+   	}
 
 }

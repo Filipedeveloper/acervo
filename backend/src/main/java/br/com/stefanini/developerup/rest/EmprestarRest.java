@@ -42,6 +42,17 @@ public class EmprestarRest {
         return Response.status(Response.Status.OK).entity(service.listar()).build();
     }
 	
+	@GET
+	@Path("/teste")
+    @Operation(summary = "Listar", description = "Retorna uma lista de Emprestimos")
+    @APIResponse(responseCode = "200", description = "Emprestimo",
+            content = {@Content(mediaType = "application/json",
+                    schema = @Schema(implementation = EmprestarDto.class))})
+    public Response emprestimos()  {
+    	
+        return Response.status(Response.Status.OK).entity(service.validarEmprestimo()).build();
+    }
+	
 	
 	@POST
     @Operation(summary = "Inserir", description = "Insere um emprestimo")

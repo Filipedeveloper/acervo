@@ -20,6 +20,8 @@ public class ClienteParser {
         dto.setEmail(entidade.getEmail());
         dto.setNome(entidade.getNome());
         dto.setContato(entidade.getContato());
+        dto.setEmprestimos(entidade.getEmprestimos());
+
         return dto;
     }
 }

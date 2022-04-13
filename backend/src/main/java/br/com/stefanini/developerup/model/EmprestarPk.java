@@ -6,6 +6,7 @@ import java.util.Objects;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -18,13 +19,17 @@ public class EmprestarPk implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	
+	
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 	
+	
+	
 	@ManyToOne
 	@JoinColumn(name = "livro_id")
 	private Livro livro;
+	
 	
 	public Cliente getCliente() {
 		return cliente;
