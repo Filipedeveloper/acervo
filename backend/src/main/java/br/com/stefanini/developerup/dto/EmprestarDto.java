@@ -7,7 +7,7 @@ public class EmprestarDto {
 	
 	private String dataInicio;
 	private String dataEntrega;
-	private String status;
+	private Boolean status;
 	
 	private Integer idCliente;
 	private Integer idLivro;
@@ -28,10 +28,10 @@ public class EmprestarDto {
 	public void setDataEntrega(String dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}
-	public String getStatus() {
+	public Boolean getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(Boolean status) {
 		this.status = status;
 	}
 	public Integer getIdCliente() {

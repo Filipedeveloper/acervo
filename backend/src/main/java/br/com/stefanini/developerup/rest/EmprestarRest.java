@@ -50,7 +50,7 @@ public class EmprestarRest {
                     schema = @Schema(implementation = EmprestarDto.class))})
     public Response emprestimos()  {
     	
-        return Response.status(Response.Status.OK).entity(service.validarEmprestimo()).build();
+        return Response.status(Response.Status.OK).entity(service.listarEmprestimo()).build();
     }
 	
 	

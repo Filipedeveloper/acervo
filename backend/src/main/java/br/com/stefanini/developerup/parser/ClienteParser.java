@@ -24,4 +24,12 @@ public class ClienteParser {
 
         return dto;
     }
+    
+    public Cliente fromCliente(ClienteDto dto) {
+    	Cliente cliente = new Cliente();
+    	cliente.setNome(dto.getNome());
+    	cliente.setEmail(dto.getEmail());
+    	cliente.setContato(dto.getContato());
+    	return cliente;
+    }
 }

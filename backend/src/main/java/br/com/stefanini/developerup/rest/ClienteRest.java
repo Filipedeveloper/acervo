@@ -12,6 +12,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -45,10 +46,10 @@ public class ClienteRest {
     @Operation(summary = "Inserir", description  = "Inserir um Cliente")
     @APIResponse(responseCode = "204", description = "Inserir Cliente",
     content = {@Content(mediaType = "application/json", 
-    schema = @Schema(implementation = Cliente.class))})
-    public Response inserir(@RequestBody Cliente cliente) {
-    	service.inserir(cliente);
-    	return Response.status(Response.Status.OK).entity(cliente).build();
+    schema = @Schema(implementation = ClienteDto.class))})
+    public Response inserir(@Valid @RequestBody ClienteDto clientedto) {
+    	ClienteDto cli = service.inserir(clientedto);
+    	return Response.status(Response.Status.OK).entity(cli).build();
     }
     
     @PUT
@@ -56,9 +57,9 @@ public class ClienteRest {
     @Operation(summary = "Ataulizar", description = "Atualizar um cliente")
     @APIResponse(responseCode = "200", description = "Atualizar cliente",
             content = {@Content(mediaType = "application/json",
-                    schema = @Schema(implementation = Cliente.class))})
-    public Response atualizar(@PathParam("cliente") Integer id, Cliente novoCliente)  {
-    	Cliente obj = service.atualizar(id, novoCliente);
+                    schema = @Schema(implementation = ClienteDto.class))})
+    public Response atualizar(@Valid @PathParam("cliente") Integer id, ClienteDto novoCliente)  {
+    	ClienteDto obj = service.atualizar(id, novoCliente);
     	return Response.status(Response.Status.OK).entity(obj).build();
     	
     }

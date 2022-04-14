@@ -26,6 +26,17 @@ public class ClienteDao {
 		return Cliente.findById(id);
 	}
     
+    public static List<Cliente> buscaName(String name) {
+        
+        return Cliente.find("nome like CONCAT('%',?1, '%') ", name).list();
+    }
+    
+    public static List<Cliente> buscaEmail(String email) {
+        
+        return Cliente.find("email like CONCAT('%',?1, '%') ", email).list();
+    }
+    
+    
     @Transactional
 	public void inserir(Cliente cliente) {
 		Autor.persist(cliente);

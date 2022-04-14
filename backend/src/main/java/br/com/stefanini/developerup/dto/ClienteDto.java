@@ -3,6 +3,12 @@ package br.com.stefanini.developerup.dto;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import br.com.stefanini.developerup.model.Emprestar;
 
 /**
@@ -13,11 +19,15 @@ import br.com.stefanini.developerup.model.Emprestar;
  */
 public class ClienteDto {
 
+	@NotBlank(message = "Preenchimento obrigatorio")
     private String email;
 
+	@NotBlank(message = "Preenchimento obrigatorio")
+	@Length(max = 50, message = "Deve possuir no máximo 50 caracteres")
     private String nome;
 
-
+	
+	@NotBlank(message = "Preenchimento obrigatorio")
     private String contato;
     
     private Set<Emprestar> emprestimos = new HashSet<>();

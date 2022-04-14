@@ -31,21 +31,28 @@ public class EmprestarDao {
 		Emprestar.persist(emprestar);
 	}
 	
-	public List<Emprestar>emprestimos(Integer idLivro){
-		//TypedQuery<Emprestar> query = em.createQuery("SELECT staus FROM Emprestar emprestar	where livro.id = :id", Emprestar.class);
-		//query.setParameter("id", "1");
-		//Emprestar.find("idlivro", idLivro).
-		List<Emprestar> emp = em.createNativeQuery("SELECT livro_id, cliente_id FROM emprestar where livro_id = :livro_id AND status = :status")
-		.setParameter("livro_id", 1)
-		.setParameter("status", "Emprestado")
+	@SuppressWarnings("unused")
+	public List<Emprestar>emprestimosPorLivroDisponivel(Integer idLivro){
+		
+		@SuppressWarnings("unchecked")
+		List<Emprestar> emp = em.createNativeQuery("SELECT livro_id, cliente_id,status FROM emprestar where livro_id = :livro_id AND status = :status")
+		.setParameter("livro_id", idLivro)
+		.setParameter("status", true)
 		.getResultList();
 		
-		int quantidadeEmprestimo = emp.size();
-		//CriteriaQuery<Object[]> criteria = builder.createQuery( Object[].class );
-		//Root<Emprestar> root = criteria.from( Emprestar.class );
-		//Path<Long> idPath = root.get(Emprestar.);
-		//
-		//query.setParameter("status", "emprestado");
+		return emp;
+	}
+	
+	@SuppressWarnings("unused")
+	public List<Emprestar>emprestimosPorCliente(Integer idCliente, Integer idLivro){
+		
+		@SuppressWarnings("unchecked")
+		List<Emprestar> emp = em.createNativeQuery("SELECT livro_id, cliente_id,status FROM emprestar where livro_id = :livro_id AND cliente_id = :cliente_id AND status = :status")
+		.setParameter("livro_id", idLivro)
+		.setParameter("cliente_id", idCliente)
+		.setParameter("status", true)
+		.getResultList();
+		
 		return emp;
 	}
 	

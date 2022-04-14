@@ -32,13 +32,13 @@ public class Emprestar extends PanacheEntityBase implements Serializable {
 	
 	private String dataInicio;
 	private String dataEntrega;
-	private String status;
+	private Boolean status;
 	
 	public Emprestar() {
 		super();
 	}
 
-	public Emprestar(Cliente cliente, Livro livro, String dataInicio, String dataEntrega, String status) {
+	public Emprestar(Cliente cliente, Livro livro, String dataInicio, String dataEntrega, Boolean status) {
 		super();
 		id.setCliente(cliente);
 		id.setLivro(livro);
@@ -81,11 +81,11 @@ public class Emprestar extends PanacheEntityBase implements Serializable {
 		this.dataEntrega = dataEntrega;
 	}
 
-	public String getStatus() {
+	public Boolean getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Boolean status) {
 		this.status = status;
 	}
 
