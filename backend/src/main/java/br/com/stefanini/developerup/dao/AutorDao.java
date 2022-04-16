@@ -20,8 +20,9 @@ public class AutorDao {
 	}
 	
 	@Transactional
-	public void inserir(Autor autor) {
+	public Autor inserir(Autor autor) {
 		Autor.persist(autor);
+		return autor;
 	}
 	
 	@Transactional

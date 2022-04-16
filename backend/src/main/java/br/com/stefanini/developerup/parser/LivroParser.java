@@ -1,5 +1,7 @@
 package br.com.stefanini.developerup.parser;
 
+import java.text.SimpleDateFormat;
+
 import br.com.stefanini.developerup.dto.AutorDto;
 import br.com.stefanini.developerup.dto.ClienteDto;
 import br.com.stefanini.developerup.dto.LivroDto;
@@ -14,6 +16,7 @@ import br.com.stefanini.developerup.model.Livro;
  * @version 0.1.0
  */
 public class LivroParser {
+	SimpleDateFormat sds = new SimpleDateFormat("yyyy");
     public static LivroParser get(){
         return  new LivroParser();
     }

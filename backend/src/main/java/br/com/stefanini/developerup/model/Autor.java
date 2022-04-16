@@ -1,11 +1,14 @@
 package br.com.stefanini.developerup.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 import javax.json.bind.annotation.JsonbTransient;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
@@ -28,9 +32,16 @@ public class Autor extends PanacheEntityBase implements Serializable {
 	private Integer id;
 	
 	private String nome;
+	
+	@Column(unique = true)
 	private String isni;
+	
+	@Column(unique = true)
 	private String email;
-	private String dataNascimento;
+	
+	@JsonFormat(pattern="yyyy-MM-dd")
+	private LocalDate dataNascimento;
+	
 	private String biografia;
 	
 	@JsonIgnore
@@ -41,7 +52,7 @@ public class Autor extends PanacheEntityBase implements Serializable {
 	public Autor() {
 		super();
 	}
-	public Autor(Integer id, String nome, String isni, String email, String dataNascimento, String biografia) {
+	public Autor(Integer id, String nome, String isni, String email, LocalDate dataNascimento, String biografia) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -74,10 +85,10 @@ public class Autor extends PanacheEntityBase implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getDataNascimento() {
+	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
-	public void setDataNascimento(String dataNascimento) {
+	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 	public String getBiografia() {

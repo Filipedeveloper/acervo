@@ -1,13 +1,33 @@
 package br.com.stefanini.developerup.dto;
 
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.Length;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class LivroDto {
 	
 	private Integer id;
+	
+	@NotBlank
+	@Length(max = 50)
 	private String nome;
 	private Integer autorId;
+	
+	
 	private String anoPublicacao;
-	private String editora;
+	
+	@NotBlank
+	@Length(max = 50)
+	private String editora;	
 	private String isbn;
+	
+	@NotBlank
+	@Length(min = 1)
 	private Integer quantidade;
 	
 	

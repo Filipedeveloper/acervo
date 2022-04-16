@@ -12,10 +12,12 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -51,9 +53,15 @@ public class AutorRest {
     @Operation(summary = "Inserir", description = "Insere um autor")
     @APIResponse(responseCode = "204", description = "Inserir autor",
             content = {@Content(mediaType = "application/json",
-                    schema = @Schema(implementation = Autor.class))})
-    public Response inserir(@RequestBody Autor autor)  {
-    	service.inserir(autor);
+                    schema = @Schema(implementation = AutorDto.class))})
+    public Response inserir(@Valid @RequestBody AutorDto dto)  {
+    	AutorDto autor = null;
+		try {
+			autor = service.inserir(dto);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	return Response.status(Response.Status.OK).entity(autor).build();
     }
     

@@ -1,6 +1,17 @@
 package br.com.stefanini.developerup.dto;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Date;
+
+import javax.json.bind.annotation.JsonbDateFormat;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
+
+import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.com.stefanini.developerup.model.Autor;
 
@@ -10,10 +21,19 @@ public class AutorDto implements Serializable {
 
 	private Integer id;
 	
+	@NotBlank(message = "Preenchimento obrigatorio")
+	@Length(max = 50, message = "Deve possuir no máximo 50 caracteres")
 	private String nome;
 	private String isni;
+	
+	@NotBlank(message = "Preenchimento obrigatorio")
 	private String email;
-	private String dataNascimento;
+	
+	@Past
+	@JsonFormat(pattern="yyyy-MM-dd")
+	private LocalDate dataNascimento;
+	
+	@Length(max = 200, message = "Deve possuir no máximo 200 caracteres")
 	private String biografia;
 	
 	
@@ -48,10 +68,10 @@ public class AutorDto implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getDataNascimento() {
+	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
-	public void setDataNascimento(String dataNascimento) {
+	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 	public String getBiografia() {
