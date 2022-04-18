@@ -73,7 +73,7 @@ public class LivroService {
 		
 	}
 	
-	/*public Livro atualizar(Integer id, LivroDto dto) {
+	public Livro atualizar(Integer id, LivroDto dto) {
 		try {
 			Autor obj = daoAutor.pesquisarAutor(dto.getAutorId());
 			Livro livroAtual = dao.pesquisarLivro(id);
@@ -89,5 +89,5 @@ public class LivroService {
 		
 		return null;
 		
-	}*/
+	}
 }

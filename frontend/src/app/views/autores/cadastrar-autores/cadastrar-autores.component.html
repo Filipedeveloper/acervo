@@ -1,0 +1,70 @@
+<mat-card>
+  <form action="" [formGroup]="form"  (ngSubmit)="submit()" (ngReset)="reiniciarForm()">
+    <mat-card-title>Cadastro de clientes</mat-card-title>
+
+    <mat-card-content class="formulario" >
+
+      <p>
+        <mat-form-field appearance="outline" class="campos">
+          <mat-label>Nome *</mat-label>
+          <input matInput placeholder="Nome Completo" name="nome" formControlName="nome"  >
+          <mat-error >Campo brigatorio</mat-error>
+          <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="outline" class="campos">
+          <mat-label>ISNI *</mat-label>
+          <input matInput placeholder="Código ISNI" name="isni" formControlName="isni"  >
+          <!--<mat-error >Campo brigatorio</mat-error>-->
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </p>
+
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pat@example.com" name="email" formControlName="email" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <p>
+        <mat-form-field appearance="outline" >
+          <mat-label>Data de Nascimento *</mat-label>
+          <input matInput placeholder="Data de Nascimento" type="date" required name="dataNascimento" formControlName="dataNascimento">
+          <mat-error *ngIf="dt.invalid">{{getErrorMessageDt()}}</mat-error>
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill" class="campos">
+          <mat-label>Biografia</mat-label>
+          <textarea matInput name="biografia" formControlName="biografia"></textarea>
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-error >Campo brigatorio</mat-error>
+        </mat-form-field>
+      </p>
+
+
+
+
+
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="example-button-row">
+
+        <button mat-raised-button color="accent" type="salvar">Cadastrar</button>
+        <button mat-raised-button color="warn" type="reset">Cancelar</button>
+
+      </div>
+    </mat-card-actions>
+  </form>
+
+</mat-card>
+<br>
+

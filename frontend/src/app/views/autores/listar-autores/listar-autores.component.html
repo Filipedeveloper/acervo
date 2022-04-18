@@ -1,0 +1,133 @@
+
+<div *ngIf="autores$ | async as autores; else loading">
+  <div class="w-100 mb-3">
+    <button mat-raised-button color="primary" (click)="openDialog()" class="">
+      Novo
+    </button>
+  </div>
+
+  <mat-toolbar color="primary">
+    <span>Autores</span>
+  </mat-toolbar>
+
+  <!--<mat-table [dataSource]="autores" class="mat-elevation-z8">
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+
+    <ng-container matColumnDef="nome">
+      <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.nome}} </mat-cell>
+    </ng-container>
+
+
+     <ng-container matColumnDef="isni">
+      <mat-header-cell *matHeaderCellDef> ISNI </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.isni}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> E-mail </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.email}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="dataNascimento">
+      <mat-header-cell *matHeaderCellDef> Data de Nascimento </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.dataNascimento}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="acoes">
+      <mat-header-cell *matHeaderCellDef style="width:180px"> Ações </mat-header-cell>
+      <mat-cell *matCellDef="let row" style="width:180px">
+        <button mat-raised-button color="accent" class="me-2">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-raised-button color="warn" class="">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+
+
+
+  </mat-table>-->
+
+  <div class="container">
+    <div>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+      </mat-form-field>
+
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="nome">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+            <td mat-cell *matCellDef="let row"> {{row.nome}} </td>
+          </ng-container>
+
+          <!-- Progress Column -->
+          <ng-container matColumnDef="isni">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Código ISNI </th>
+            <td mat-cell *matCellDef="let row"> {{row.isni}}% </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> E-mail </th>
+            <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+          </ng-container>
+
+          <!-- Fruit Column -->
+          <ng-container matColumnDef="dataNascimento">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Data de Nascimento </th>
+            <td mat-cell *matCellDef="let row"> {{row.dataNascimento | date}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="acoes">
+            <mat-header-cell *matHeaderCellDef style="width:180px"> Ações </mat-header-cell>
+            <mat-cell *matCellDef="let row" style="width:180px">
+              <button mat-raised-button color="accent" (click)="editarAutor(row)" class="me-2">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-raised-button (click)="deletarAutor(row.id)" color="warn" class="">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+<ng-template #loading>
+  <div class="loading-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+
+</ng-template>
+
+
+

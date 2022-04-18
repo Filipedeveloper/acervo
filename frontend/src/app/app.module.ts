@@ -17,6 +17,25 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ListarAutoresComponent } from './views/autores/listar-autores/listar-autores.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDialogModule} from '@angular/material/dialog';
+import { CadastrarAutoresComponent } from './views/autores/cadastrar-autores/cadastrar-autores.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
+import { DialogComponent } from './core/components/dialog/dialog.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import { ListarLivrosComponent } from './views/livros/listar-livros/listar-livros.component';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +43,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     HomeComponent,
     ListarClientesComponent,
     FooterComponent,
+    ListarAutoresComponent,
+    CadastrarAutoresComponent,
+    DialogComponent,
+    ListarLivrosComponent,
+
+
   ],
   imports: [
     CommonModule,
@@ -38,6 +63,20 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatTableModule,
     MatSnackBarModule,
     MatCheckboxModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatSortModule
+
+
+
   ],
   providers: [],
   bootstrap: [AppComponent],

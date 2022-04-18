@@ -24,6 +24,7 @@ public class AutorParser {
     	
         AutorDto dto = new AutorDto();        
         
+        dto.setId(autor.getId());
 		dto.setNome(autor.getNome());
 		dto.setIsni(autor.getIsni());
 		dto.setEmail(autor.getEmail());
@@ -35,6 +36,7 @@ public class AutorParser {
     
     public Autor fromAutor(AutorDto dto) {
     	Autor autor = new Autor();
+    	autor.setId(dto.getId());
     	autor.setNome(dto.getNome());
     	autor.setIsni(dto.getIsni());
     	autor.setEmail(dto.getEmail());
