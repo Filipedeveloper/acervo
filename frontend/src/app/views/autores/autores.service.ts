@@ -16,7 +16,7 @@ export class AutoresService {
   list(){
     return  this.http.get<Autor[]>(ApiUrl.listarAutores)
     .pipe(
-      delay(5000),
+      delay(1000),
       tap(autores => console.log(autores),
 
       )

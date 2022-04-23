@@ -3,5 +3,7 @@ export interface Livros {
   nome: String,
   isbn: String,
   anoPublicacao: String,
+  editora:String,
   quantidade: number,
+  autorId:number;
 }

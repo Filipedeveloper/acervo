@@ -1,0 +1,55 @@
+<form [formGroup]="livroForm" (ngSubmit)="addLivros()" >
+
+  <h1 mat-dialog-title>Cadastro Livro</h1>
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Nome do autor</mat-label>
+      <input formControlName="nome" matInput placeholder="Placeholder">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Ano de publicação</mat-label>
+      <input formControlName="anoPublicacao" matInput placeholder="Ano de Publicação">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Código ISBN</mat-label>
+      <input formControlName="isbn" matInput placeholder="Código ISBN">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Quantidade</mat-label>
+      <input formControlName="quantidade" matInput placeholder="Quantidade">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Editora</mat-label>
+      <input formControlName="editora" matInput placeholder="editora">
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Autor</mat-label>
+      <mat-select formControlName="autorId">
+        <mat-option  *ngFor="let autor of autores" value="{{autor.id}}" >{{autor.nome}}</mat-option>
+
+      </mat-select>
+    </mat-form-field>
+
+
+
+
+    <mat-dialog-actions align="end">
+
+      <button mat-raised-button color="accent" type="addAutor()"  cdkFocusInitial>{{actionbtn}}</button>
+      <button mat-raised-button mat-dialog-close color="warn">Cancel</button>
+    </mat-dialog-actions>
+
+
+
+
+  </div>
+
+
+
+</form>

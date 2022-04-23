@@ -32,6 +32,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import { ListarLivrosComponent } from './views/livros/listar-livros/listar-livros.component';
+import { JanelaComponent } from './core/components/dialog/livros/janela/janela.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -47,6 +49,7 @@ import { ListarLivrosComponent } from './views/livros/listar-livros/listar-livro
     CadastrarAutoresComponent,
     DialogComponent,
     ListarLivrosComponent,
+    JanelaComponent,
 
 
   ],
@@ -73,7 +76,8 @@ import { ListarLivrosComponent } from './views/livros/listar-livros/listar-livro
     MatDatepickerModule,
     MatNativeDateModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatSelectModule
 
 
 
